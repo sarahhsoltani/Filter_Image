@@ -10,6 +10,7 @@ const CustomFilter = () => {
     { label: 'Sepia', defaultValue: 0, field: 'sepia' },
     { label: 'Gray Scale', defaultValue: 0, field: 'gray' },
   ]
+ 
   return (
     <Box sx={{marginTop:"2rem"}}>
       {

@@ -1,23 +1,30 @@
-import {useState} from "react"
-import { Box, Tab, Tabs} from "@mui/material"
- const FilterTabs = () => {
-  const [tabFilter,setTabFilter]=useState('instaFilter')
+import { Box, Tab, Tabs } from "@mui/material"
+import { useContext } from "react"
+import { FilterContext } from "../App";
 
-  const handleChange=(e,newValue)=>{
-    setTabFilter(newValue)
+const FilterTabs = () => {
+  const {tabFilter, setTabFilter, setFilterClass} = useContext(FilterContext);
+
+  const handleChange = (e, newValue) => {
+    setTabFilter(newValue);
+    if(newValue === 'customFilter') {
+      setFilterClass('');
+    }
   }
+
   return (
-    <Box  xs={{marginBottom:'2rem' }} >
-      <Tabs   value={tabFilter}
-          onChange={handleChange}
-          textColor="secondary"
-          indicatorColor="secondary"
-          >
-        <Tab value="instaFilter" label="InstaGram Filter"/>
-        
-        <Tab value="CustomFilter" label="Custom Filter"/>
+    <Box sx={{ marginBottom: '2rem' }}>
+      <Tabs
+        value={tabFilter}
+        onChange={handleChange}
+        textColor="secondary"
+        indicatorColor="secondary"
+      >
+        <Tab value="instaFilter" label="Instagram Filter" />
+        <Tab value="customFilter" label="Custom Filter" />
       </Tabs>
     </Box>
   )
 }
+
 export default FilterTabs
